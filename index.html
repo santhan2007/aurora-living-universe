@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" data-theme="quiet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070914" />
+    <meta name="description" content="AURORA — The Living Universe. An interactive study in atmosphere, motion, and color." />
+    <title>AURORA — The Living Universe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <canvas class="starfield" id="starfield" aria-hidden="true"></canvas>
+    <div class="noise" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Aurora home"><span class="wordmark-mark">✦</span> AURORA</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span><span class="sr-only">Open navigation</span>
+      </button>
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="#explore">Explore</a>
+        <a href="#customize">Customize</a>
+        <a href="#about">About</a>
+        <button class="motion-toggle" type="button" aria-pressed="false"><span class="motion-dot"></span><span class="motion-label">Motion on</span></button>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section-frame" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> A living study in atmosphere</p>
+          <h1 id="hero-title">Enter<br /><em>the unknown.</em></h1>
+          <p class="hero-intro">AURORA is a quiet place for curious minds — a universe of color, rhythm, and light that changes when you do.</p>
+          <a class="button button-primary" href="#explore">Begin exploring <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-object-wrap" aria-label="Animated aurora crystal" role="img">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="crystal">
+            <div class="crystal-face face-top"></div><div class="crystal-face face-left"></div><div class="crystal-face face-right"></div>
+            <div class="crystal-core"></div>
+          </div>
+          <span class="object-label label-top">signal / 001</span>
+          <span class="object-label label-bottom">46° 12' 08" N</span>
+        </div>
+        <div class="scroll-cue"><span></span> Scroll to drift</div>
+      </section>
+
+      <section class="intro section-frame" id="about" aria-labelledby="intro-title">
+        <p class="eyebrow">01 / The premise</p>
+        <div class="intro-grid">
+          <h2 id="intro-title">Not a destination.<br /><span>A state of mind.</span></h2>
+          <div class="intro-copy"><p>Somewhere between the first thought and the next horizon, there is a place that does not need a map.</p><p>Choose a frequency. Stay as long as you like. The universe is listening.</p></div>
+        </div>
+      </section>
+
+      <section class="explore section-frame" id="explore" aria-labelledby="explore-title">
+        <div class="section-heading"><div><p class="eyebrow">02 / Choose your frequency</p><h2 id="explore-title">Three ways to <em>feel</em> the infinite.</h2></div><p class="section-note">Select a world<br />to tune the signal.</p></div>
+        <div class="environment-grid" role="group" aria-label="Choose an environment">
+          <button class="environment-card tide is-selected" type="button" data-environment="quiet" aria-pressed="true">
+            <span class="card-number">01</span><span class="card-icon">◌</span><span class="card-arrow" aria-hidden="true">↗</span>
+            <span class="card-content"><strong>Quiet Tide</strong><small>For softer thoughts</small></span>
+          </button>
+          <button class="environment-card dream" type="button" data-environment="velvet" aria-pressed="false">
+            <span class="card-number">02</span><span class="card-icon">✧</span><span class="card-arrow" aria-hidden="true">↗</span>
+            <span class="card-content"><strong>Velvet Dream</strong><small>For wandering minds</small></span>
+          </button>
+          <button class="environment-card pulse" type="button" data-environment="electric" aria-pressed="false">
+            <span class="card-number">03</span><span class="card-icon">⌁</span><span class="card-arrow" aria-hidden="true">↗</span>
+            <span class="card-content"><strong>Electric Pulse</strong><small>For the wide awake</small></span>
+          </button>
+        </div>
+        <div class="signal-readout"><span class="readout-dot"></span><span id="environment-status">Quiet Tide is surrounding you</span><span class="readout-rule"></span><span>Live / 01</span></div>
+      </section>
+
+      <section class="customize section-frame" id="customize" aria-labelledby="customize-title">
+        <div class="customize-visual"><div class="mini-orbit"></div><div class="mini-crystal"></div><span>your<br />frequency</span></div>
+        <div class="customize-copy"><p class="eyebrow">03 / Make it yours</p><h2 id="customize-title">Leave a little<br /><em>light on.</em></h2><p>Every universe has a color. Choose the one that feels most like you — your signal will be waiting when you return.</p>
+          <div class="palette-picker" role="group" aria-label="Choose a color palette">
+            <button class="palette-option palette-quiet is-selected" type="button" data-theme-choice="quiet" aria-label="Choose quiet tide palette" aria-pressed="true"><span></span>Quiet tide</button>
+            <button class="palette-option palette-velvet" type="button" data-theme-choice="velvet" aria-label="Choose velvet dream palette" aria-pressed="false"><span></span>Velvet dream</button>
+            <button class="palette-option palette-electric" type="button" data-theme-choice="electric" aria-label="Choose electric pulse palette" aria-pressed="false"><span></span>Electric pulse</button>
+          </div>
+          <p class="saved-note" id="saved-note" role="status">Your signal is saved locally.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer section-frame">
+      <a class="wordmark" href="#top" aria-label="Back to top"><span class="wordmark-mark">✦</span> AURORA</a>
+      <p>Made for the beautifully curious.</p>
+      <a class="back-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
+      <small>© 2024 / The living universe</small>
+    </footer>
+  </body>
+</html>
