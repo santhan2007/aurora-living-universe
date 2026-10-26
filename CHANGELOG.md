@@ -14,3 +14,11 @@
 - Added distinct living world behavior with layered rings, lighting, and world-specific color movement for Quiet Tide, Velvet Dream, and Electric Pulse.
 - Added the accessible Cosmic Discovery panel with fictional facts, atmospheric descriptions, keyboard dismissal, and mobile-friendly activation.
 - Preserved theme persistence, responsive navigation, Canvas starfield, motion controls, and reduced-motion behavior.
+
+## 2026-10-26
+
+- Fixed the motion toggle so re-enabling motion restarts the starfield animation.
+- Validated persisted palette values before applying them to the document theme.
+- Added a closing narrative section, skip link, secondary hero action, and responsive focus improvements.
+- Added scroll reveal choreography, restrained pointer depth, and visibility-aware starfield animation.
+- Expanded documentation with feature, accessibility, performance, and usage details.

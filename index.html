@@ -13,6 +13,7 @@
     <script src="app.js" defer></script>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <canvas class="starfield" id="starfield" aria-hidden="true"></canvas>
     <div class="noise" aria-hidden="true"></div>
     <div class="cosmic-vignette" aria-hidden="true"></div>
@@ -30,13 +31,17 @@
       </nav>
     </header>
 
-    <main id="top">
+    <main id="main-content">
+      <div id="top" class="page-anchor" aria-hidden="true"></div>
       <section class="hero section-frame" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="eyebrow"><span class="eyebrow-line"></span> A living study in atmosphere</p>
           <h1 id="hero-title">Enter<br /><em>the unknown.</em></h1>
           <p class="hero-intro">AURORA is a quiet place for curious minds — a universe of color, rhythm, and light that changes when you do.</p>
-          <a class="button button-primary" href="#explore">Begin exploring <span aria-hidden="true">↗</span></a>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#explore">Begin exploring <span aria-hidden="true">↗</span></a>
+            <a class="button button-quiet" href="#about">Read the premise <span aria-hidden="true">↓</span></a>
+          </div>
         </div>
         <div class="hero-object-wrap" aria-label="Animated aurora crystal" role="img">
           <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
@@ -50,7 +55,7 @@
         <div class="scroll-cue"><span></span> Scroll to drift</div>
       </section>
 
-      <section class="intro section-frame" id="about" aria-labelledby="intro-title">
+      <section class="intro section-frame reveal" id="about" aria-labelledby="intro-title">
         <p class="eyebrow">01 / The premise</p>
         <div class="intro-grid">
           <h2 id="intro-title">Not a destination.<br /><span>A state of mind.</span></h2>
@@ -58,7 +63,7 @@
         </div>
       </section>
 
-      <section class="explore section-frame" id="explore" aria-labelledby="explore-title">
+      <section class="explore section-frame reveal" id="explore" aria-labelledby="explore-title">
         <div class="section-heading"><div><p class="eyebrow">02 / Choose your frequency</p><h2 id="explore-title">Three ways to <em>feel</em> the infinite.</h2></div><p class="section-note">Select a world<br />to tune the signal.</p></div>
         <div class="environment-grid" role="group" aria-label="Choose an environment">
           <button class="environment-card tide is-selected" type="button" data-environment="quiet" aria-pressed="true" aria-expanded="false">
@@ -87,7 +92,7 @@
         </aside>
       </section>
 
-      <section class="customize section-frame" id="customize" aria-labelledby="customize-title">
+      <section class="customize section-frame reveal" id="customize" aria-labelledby="customize-title">
         <div class="customize-visual"><div class="mini-orbit"></div><div class="mini-crystal"></div><span>your<br />frequency</span></div>
         <div class="customize-copy"><p class="eyebrow">03 / Make it yours</p><h2 id="customize-title">Leave a little<br /><em>light on.</em></h2><p>Every universe has a color. Choose the one that feels most like you — your signal will be waiting when you return.</p>
           <div class="palette-picker" role="group" aria-label="Choose a color palette">
@@ -98,13 +103,19 @@
           <p class="saved-note" id="saved-note" role="status">Your signal is saved locally.</p>
         </div>
       </section>
+      <section class="closing section-frame reveal" aria-labelledby="closing-title">
+        <p class="eyebrow"><span class="eyebrow-line"></span> The signal remains</p>
+        <h2 id="closing-title">There is always<br /><em>more sky.</em></h2>
+        <p class="closing-copy">Return whenever the world gets loud. Your frequency is still here, quietly changing with you.</p>
+        <a class="button button-primary" href="#explore">Return to the worlds <span aria-hidden="true">↗</span></a>
+      </section>
     </main>
 
     <footer class="site-footer section-frame">
       <a class="wordmark" href="#top" aria-label="Back to top"><span class="wordmark-mark">✦</span> AURORA</a>
       <p>Made for the beautifully curious.</p>
       <a class="back-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
-      <small>© 2024 / The living universe</small>
+      <small>© 2026 / The living universe</small>
     </footer>
   </body>
 </html>

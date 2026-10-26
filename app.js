@@ -4,7 +4,7 @@
   const root = document.documentElement;
   const body = document.body;
   const canvas = document.querySelector("#starfield");
-  const context = canvas.getContext("2d");
+  const context = canvas?.getContext("2d");
   const motionToggle = document.querySelector(".motion-toggle");
   const motionLabel = document.querySelector(".motion-label");
   const menuToggle = document.querySelector(".menu-toggle");
@@ -17,10 +17,14 @@
   const discoveryDescription = document.querySelector("#discovery-description");
   const discoveryIndex = document.querySelector("#discovery-index");
   const discoveryClose = document.querySelector(".discovery-close");
+  const revealItems = document.querySelectorAll(".reveal");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const validThemes = new Set(["quiet", "velvet", "electric"]);
   let stars = [];
   let animationFrame;
   let discoveryOrigin;
+
+  if (!canvas || !context) return;
 
   function readPreference(key) {
     try { return window.localStorage.getItem(key); } catch (error) { return null; }
@@ -31,6 +35,7 @@
   }
 
   function setTheme(theme, announce = false) {
+    if (!validThemes.has(theme)) theme = "quiet";
     root.dataset.theme = theme;
     document.querySelectorAll("[data-theme-choice]").forEach((button) => {
       const selected = button.dataset.themeChoice === theme;
@@ -42,10 +47,13 @@
   }
 
   function setMotion(enabled) {
-    body.classList.toggle("motion-off", !enabled);
-    motionToggle.setAttribute("aria-pressed", String(enabled));
-    motionLabel.textContent = enabled ? "Motion on" : "Motion off";
-    savePreference("aurora-motion", enabled ? "on" : "off");
+    const motionEnabled = enabled && !prefersReducedMotion;
+    body.classList.toggle("motion-off", !motionEnabled);
+    motionToggle.setAttribute("aria-pressed", String(motionEnabled));
+    motionLabel.textContent = motionEnabled ? "Motion on" : "Motion off";
+    savePreference("aurora-motion", motionEnabled ? "on" : "off");
+    cancelAnimationFrame(animationFrame);
+    if (motionEnabled && stars.length) drawStars();
   }
 
   function resizeCanvas() {
@@ -62,6 +70,7 @@
   }
 
   function drawStars() {
+    if (document.hidden) return;
     context.clearRect(0, 0, window.innerWidth, window.innerHeight);
     stars.forEach((star) => {
       context.beginPath();
@@ -73,7 +82,9 @@
         if (star.y < -2) star.y = window.innerHeight + 2;
       }
     });
-    if (!body.classList.contains("motion-off") && !prefersReducedMotion) animationFrame = requestAnimationFrame(drawStars);
+    if (!body.classList.contains("motion-off") && !prefersReducedMotion) {
+      animationFrame = requestAnimationFrame(drawStars);
+    }
   }
 
   const worlds = {
@@ -165,6 +176,16 @@
       });
     }, { threshold: [0, .35, .65], rootMargin: "-12% 0px -18% 0px" });
     document.querySelectorAll("[data-environment]").forEach((card) => worldObserver.observe(card));
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach((item) => revealObserver.observe(item));
+  } else {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
   }
 
   let scrollUpdateQueued = false;
@@ -184,13 +205,27 @@
   menuToggle.addEventListener("click", () => {
     const open = menuToggle.getAttribute("aria-expanded") === "true";
     menuToggle.setAttribute("aria-expanded", String(!open));
+    menuToggle.querySelector(".sr-only").textContent = open ? "Open navigation" : "Close navigation";
     navigation.classList.toggle("is-open", !open);
   });
   navigation.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
     navigation.classList.remove("is-open");
     menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.querySelector(".sr-only").textContent = "Open navigation";
   }));
   window.addEventListener("resize", () => { cancelAnimationFrame(animationFrame); resizeCanvas(); drawStars(); });
+  document.addEventListener("visibilitychange", () => {
+    cancelAnimationFrame(animationFrame);
+    if (!document.hidden && !body.classList.contains("motion-off") && !prefersReducedMotion) drawStars();
+  });
+  if (window.matchMedia("(pointer: fine)").matches && !prefersReducedMotion) {
+    window.addEventListener("pointermove", (event) => {
+      const x = ((event.clientX / window.innerWidth) - .5) * 12;
+      const y = ((event.clientY / window.innerHeight) - .5) * 8;
+      root.style.setProperty("--pointer-x", `${x.toFixed(2)}px`);
+      root.style.setProperty("--pointer-y", `${y.toFixed(2)}px`);
+    }, { passive: true });
+  }
 
   setTheme(readPreference("aurora-theme") || "quiet");
   setJourneyWorld("quiet");
