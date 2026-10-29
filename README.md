@@ -1,5 +1,6 @@
 # AURORA — The Living Universe
 
+<<<<<<< HEAD
 AURORA is a cinematic, framework-free digital universe built around atmosphere, color, and motion. It is an interactive study in what happens when an interface behaves like a place: the background drifts, the selected world changes the light, and small discoveries reward exploration.
 
 ## Features
@@ -21,11 +22,19 @@ The project uses only semantic HTML, modern CSS, and dependency-free browser Jav
 ## Run locally
 
 From the project directory, start a static server:
+=======
+A cinematic, interactive vanilla HTML/CSS/JavaScript experience built around atmosphere, color, and motion.
+
+## Run locally
+
+No build step or dependencies are required. Serve the folder with any static server, for example:
+>>>>>>> origin/main
 
 ```bash
 python3 -m http.server 8000
 ```
 
+<<<<<<< HEAD
 Open [http://localhost:8000](http://localhost:8000) in a browser. The folder can also be deployed directly to GitHub Pages or another static host.
 
 ## How to explore
@@ -46,3 +55,14 @@ The page uses semantic landmarks, a skip link, heading hierarchy, button control
 - `styles.css` — visual system, responsive layout, environment palettes, artwork, focus states, and motion rules.
 - `app.js` — starfield lifecycle, theme persistence, environment/discovery behavior, motion preferences, scroll reveals, and pointer depth.
 - `CHANGELOG.md` — implementation history.
+=======
+Then open `http://localhost:8000`. The project is also deployable as-is to GitHub Pages.
+
+## Project structure
+
+- `index.html` — semantic page structure and accessible controls
+- `styles.css` — visual system, responsive layout, palettes, and animation
+- `app.js` — Canvas starfield, environment selection, motion preference, and local theme persistence
+
+External Google Fonts are optional; the CSS includes system fallbacks if they cannot load.
+>>>>>>> origin/main

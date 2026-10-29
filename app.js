@@ -4,13 +4,18 @@
   const root = document.documentElement;
   const body = document.body;
   const canvas = document.querySelector("#starfield");
+<<<<<<< HEAD
   const context = canvas?.getContext("2d");
+=======
+  const context = canvas.getContext("2d");
+>>>>>>> origin/main
   const motionToggle = document.querySelector(".motion-toggle");
   const motionLabel = document.querySelector(".motion-label");
   const menuToggle = document.querySelector(".menu-toggle");
   const navigation = document.querySelector("#main-nav");
   const status = document.querySelector("#environment-status");
   const savedNote = document.querySelector("#saved-note");
+<<<<<<< HEAD
   const discoveryPanel = document.querySelector("#cosmic-discovery");
   const discoveryTitle = document.querySelector("#discovery-title");
   const discoveryFact = document.querySelector("#discovery-fact");
@@ -25,6 +30,11 @@
   let discoveryOrigin;
 
   if (!canvas || !context) return;
+=======
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let stars = [];
+  let animationFrame;
+>>>>>>> origin/main
 
   function readPreference(key) {
     try { return window.localStorage.getItem(key); } catch (error) { return null; }
@@ -35,7 +45,10 @@
   }
 
   function setTheme(theme, announce = false) {
+<<<<<<< HEAD
     if (!validThemes.has(theme)) theme = "quiet";
+=======
+>>>>>>> origin/main
     root.dataset.theme = theme;
     document.querySelectorAll("[data-theme-choice]").forEach((button) => {
       const selected = button.dataset.themeChoice === theme;
@@ -47,6 +60,7 @@
   }
 
   function setMotion(enabled) {
+<<<<<<< HEAD
     const motionEnabled = enabled && !prefersReducedMotion;
     body.classList.toggle("motion-off", !motionEnabled);
     motionToggle.setAttribute("aria-pressed", String(motionEnabled));
@@ -54,6 +68,12 @@
     savePreference("aurora-motion", motionEnabled ? "on" : "off");
     cancelAnimationFrame(animationFrame);
     if (motionEnabled && stars.length) drawStars();
+=======
+    body.classList.toggle("motion-off", !enabled);
+    motionToggle.setAttribute("aria-pressed", String(enabled));
+    motionLabel.textContent = enabled ? "Motion on" : "Motion off";
+    savePreference("aurora-motion", enabled ? "on" : "off");
+>>>>>>> origin/main
   }
 
   function resizeCanvas() {
@@ -70,7 +90,10 @@
   }
 
   function drawStars() {
+<<<<<<< HEAD
     if (document.hidden) return;
+=======
+>>>>>>> origin/main
     context.clearRect(0, 0, window.innerWidth, window.innerHeight);
     stars.forEach((star) => {
       context.beginPath();
@@ -82,6 +105,7 @@
         if (star.y < -2) star.y = window.innerHeight + 2;
       }
     });
+<<<<<<< HEAD
     if (!body.classList.contains("motion-off") && !prefersReducedMotion) {
       animationFrame = requestAnimationFrame(drawStars);
     }
@@ -146,16 +170,26 @@
     if (closest) setJourneyWorld(closest.card.dataset.environment);
   }
 
+=======
+    if (!body.classList.contains("motion-off") && !prefersReducedMotion) animationFrame = requestAnimationFrame(drawStars);
+  }
+
+  const environmentNames = { quiet: "Quiet Tide is surrounding you", velvet: "Velvet Dream is unfolding", electric: "Electric Pulse is online" };
+>>>>>>> origin/main
   document.querySelectorAll("[data-environment]").forEach((button) => {
     button.addEventListener("click", () => {
       const environment = button.dataset.environment;
       setTheme(environment, true);
+<<<<<<< HEAD
       setJourneyWorld(environment);
+=======
+>>>>>>> origin/main
       document.querySelectorAll("[data-environment]").forEach((card) => {
         const selected = card === button;
         card.classList.toggle("is-selected", selected);
         card.setAttribute("aria-pressed", String(selected));
       });
+<<<<<<< HEAD
       revealDiscovery(button);
     });
   });
@@ -198,6 +232,12 @@
     });
   }, { passive: true });
 
+=======
+      status.textContent = environmentNames[environment];
+    });
+  });
+
+>>>>>>> origin/main
   document.querySelectorAll("[data-theme-choice]").forEach((button) => {
     button.addEventListener("click", () => setTheme(button.dataset.themeChoice, true));
   });
@@ -205,12 +245,16 @@
   menuToggle.addEventListener("click", () => {
     const open = menuToggle.getAttribute("aria-expanded") === "true";
     menuToggle.setAttribute("aria-expanded", String(!open));
+<<<<<<< HEAD
     menuToggle.querySelector(".sr-only").textContent = open ? "Open navigation" : "Close navigation";
+=======
+>>>>>>> origin/main
     navigation.classList.toggle("is-open", !open);
   });
   navigation.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
     navigation.classList.remove("is-open");
     menuToggle.setAttribute("aria-expanded", "false");
+<<<<<<< HEAD
     menuToggle.querySelector(".sr-only").textContent = "Open navigation";
   }));
   window.addEventListener("resize", () => { cancelAnimationFrame(animationFrame); resizeCanvas(); drawStars(); });
@@ -229,6 +273,12 @@
 
   setTheme(readPreference("aurora-theme") || "quiet");
   setJourneyWorld("quiet");
+=======
+  }));
+  window.addEventListener("resize", () => { cancelAnimationFrame(animationFrame); resizeCanvas(); drawStars(); });
+
+  setTheme(readPreference("aurora-theme") || "quiet");
+>>>>>>> origin/main
   setMotion(!prefersReducedMotion && readPreference("aurora-motion") !== "off");
   resizeCanvas();
   drawStars();

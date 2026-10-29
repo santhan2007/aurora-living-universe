@@ -60,6 +60,7 @@ body.motion-off *, body.motion-off *::before, body.motion-off *::after { animati
 @media (max-width: 800px) { .section-frame, .site-header { width: min(100% - 36px, 600px); }.site-header { top: 14px; }.menu-toggle { display: flex; flex-direction: column; gap: 4px; padding: 8px 0 8px 12px; border: 0; background: none; cursor: pointer; }.menu-toggle span:not(.sr-only) { width: 20px; height: 1px; background: var(--text); } nav { position: absolute; top: calc(100% + 8px); right: 0; left: 0; display: none; flex-direction: column; align-items: flex-start; gap: 22px; padding: 23px; border: 1px solid var(--line); background: rgba(7,9,20,.93); }nav.is-open { display: flex; }.hero { min-height: 800px; padding-top: 150px; align-items: start; }.hero-object-wrap { top: 45%; right: 2%; width: 90vw; height: 90vw; opacity: .85; }.hero-copy { max-width: 90%; }.scroll-cue { bottom: 20px; }.intro { padding-top: 100px; padding-bottom: 130px; }.intro-grid, .customize { grid-template-columns: 1fr; gap: 42px; }.explore { padding-bottom: 130px; }.section-heading { align-items: start; flex-direction: column; gap: 20px; }.section-note { text-align: left; }.environment-grid { grid-template-columns: 1fr; }.environment-card { min-height: 190px; }.card-icon { margin: 0; font-size: 55px; }.customize { padding-bottom: 130px; }.customize-visual { min-height: 320px; }.site-footer { grid-template-columns: 1fr 1fr; }.site-footer p { grid-column: 1 / -1; order: 3; }.site-footer small { grid-column: 1 / -1; order: 4; } }
 @media (max-width: 400px) { h1 { font-size: 3.8rem; }.hero-object-wrap { top: 48%; }.palette-picker { gap: 13px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; } }
+<<<<<<< HEAD
 
 /* Day 2: the page atmosphere follows the world currently in view. */
 .cosmic-vignette { position: fixed; z-index: -2; inset: -20%; opacity: .45; pointer-events: none; background: radial-gradient(ellipse at 50% 35%, transparent 25%, rgba(2, 3, 12, .5) 75%); transition: opacity .8s ease, background .8s ease; }
@@ -119,3 +120,5 @@ body { background-image: radial-gradient(circle at 50% 0%, rgba(255,255,255,.025
   .reveal { opacity: 1; transform: none; transition: none; }
   .hero-object-wrap { transform: none; transition: none; }
 }
+=======
+>>>>>>> origin/main

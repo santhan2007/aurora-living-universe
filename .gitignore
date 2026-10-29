@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Visual Studio and build files
 *.rsuser
 *.suo
@@ -17,5 +18,10 @@ __pycache__/
 # Aurora Living Universe
 .DS_Store
 .vscode/
+=======
+.DS_Store
+.vscode/
+node_modules/
+>>>>>>> origin/main
 dist/
 coverage/

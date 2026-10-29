@@ -7,6 +7,7 @@
 - Added Canvas 2D starfield with reduced-motion support.
 - Added safe local theme and motion preferences.
 - Added project README and GitHub Pages-friendly local-run instructions.
+<<<<<<< HEAD
 
 ## Day 2
 
@@ -22,3 +23,5 @@
 - Added a closing narrative section, skip link, secondary hero action, and responsive focus improvements.
 - Added scroll reveal choreography, restrained pointer depth, and visibility-aware starfield animation.
 - Expanded documentation with feature, accessibility, performance, and usage details.
+=======
+>>>>>>> origin/main
