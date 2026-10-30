@@ -1,5 +1,6 @@
 /* Motion choreography: atmosphere on entry, discovery on scroll, clarity on interaction. */
 @keyframes aurora-entry { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes header-entry { from { opacity: 0; transform: translate(-50%, 28px); } to { opacity: 1; transform: translate(-50%, 0); } }
 @keyframes object-entry { from { opacity: 0; transform: scale(.72) rotate(-8deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
 @keyframes card-entry { from { opacity: 0; transform: translateY(22px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes panel-entry { from { opacity: 0; clip-path: inset(0 0 100% 0); } to { opacity: 1; clip-path: inset(0); } }
@@ -7,7 +8,7 @@
 @keyframes quiz-correct { 0% { transform: translateX(0); } 35% { transform: translateX(7px); } 70% { transform: translateX(-4px); } 100% { transform: translateX(0); } }
 
 body { animation: aurora-entry .9s cubic-bezier(.22, 1, .36, 1) both; }
-.site-header { animation: aurora-entry .7s .08s cubic-bezier(.22, 1, .36, 1) both; }
+.site-header { animation: header-entry .7s .08s cubic-bezier(.22, 1, .36, 1) both; }
 .hero-copy { animation: aurora-entry .9s .18s cubic-bezier(.22, 1, .36, 1) both; }
 .hero-object-wrap { animation: object-entry 1.15s .22s cubic-bezier(.22, 1, .36, 1) both; }
 .scroll-cue { animation: aurora-entry .7s 1s both; }
